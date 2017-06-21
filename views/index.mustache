@@ -9,12 +9,14 @@
       <input type="text" name="todo" value="" placeholder="Add a task">
       <input type="submit" name="" value="Add"><br>
     </form>
-    <form class="" action="/todo" method="post">
-      {{#todo}}
-        <input type="submit" name="complete" value="Mark Complete">
-        <label for="complete">{{.}}</label>
+
+      {{#todoList}}
+        <form class="" action="/todo/{{id}}/complete/" method="post">
+          <input type="submit" name="complete" value="Mark Complete">
+          <label for="complete">{{.}}</label>
+        </form>
         <br>
-      {{/todo}}
-    </form>
+      {{/todoList}}
+
   </body>
 </html>
