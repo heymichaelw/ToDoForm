@@ -3,6 +3,7 @@ const mustacheExpress = require('mustache-express');
 const bodyParser = require('body-parser');
 const app = express();
 var todoList = ['Do the dishes', 'Wash the car'];
+var completedTasks = [];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
@@ -14,6 +15,7 @@ app.get('/', function(req, res){
   var idx=0,
   context = {
     todoList : todoList,
+    completedTasks : completedTasks,
     id: function(){
       return idx++;
     }
@@ -40,7 +42,11 @@ if (req.body.todo){
 });
 
 app.post('/todo/:id/complete/', function(req, res){
-  console.log(todo);
+  var id = Number(req.params.id);
+  var selection = todoList[id];
+  completedTasks.push(selection);
+  todoList.splice(id, 1);
+  res.redirect('/');
 });
 
 app.listen(3000, function(){
