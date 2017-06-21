@@ -11,6 +11,7 @@
     </form>
 
       {{#todoList}}
+        <br>
         <form class="" action="/todo/{{id}}/complete/" method="post">
           <input type="submit" name="complete" value="Mark Complete">
           <label for="complete">{{.}}</label>

@@ -25,20 +25,9 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res){
-/*
-if (req.body.todo){
-  var task = req.body.todo;
-  todo.push(task);
-  res.render('index', {todo: todo});
-} else {
-
-}
-*/
-
   var task = req.body.todo;
   todoList.push(task);
   res.redirect('/');
-  // res.render('index', {todoList: todoList});
 });
 
 app.post('/todo/:id/complete/', function(req, res){
